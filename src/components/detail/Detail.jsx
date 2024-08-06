@@ -1,5 +1,7 @@
+import { useAuth } from "../../provider/AuthProvider";
 import "./detail.css"
 const Detail = () => {
+    const { logout } = useAuth();
     return (
         <div className="detail">
             <div className="user">
@@ -64,7 +66,7 @@ const Detail = () => {
                     </div>
                 </div>
                 <button>Block User</button>
-                <button className="logout">Logout</button>
+                <button onClick={logout} className="logout">Logout</button>
             </div>
         </div>
     )

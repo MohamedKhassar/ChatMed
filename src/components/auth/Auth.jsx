@@ -2,8 +2,10 @@ import { useState } from "react"
 import "./auth.css"
 import Login from "./login/Login"
 import Register from "./register/Register"
+import { useAuth } from "../../provider/AuthProvider"
 const Auth = () => {
     const [auth, setAuth] = useState("login")
+    const { loading } = useAuth()
     return (
         <div className="auth_container">
             <div className="auth_title">
@@ -12,8 +14,8 @@ const Auth = () => {
             </div>
             <div className="auth">
                 <div className="auth_btn">
-                    <button onClick={() => setAuth("login")} className={auth != "login" && "btn_not_clicked"}>login</button>
-                    <button onClick={() => setAuth("sign-up")} className={auth != "sign-up" && "btn_not_clicked"}>sign-up</button>
+                    <button disabled={loading} onClick={() => setAuth("login")} className={auth !== "login" && "btn_not_clicked"}>login</button>
+                    <button disabled={loading} onClick={() => setAuth("sign-up")} className={auth !== "sign-up" && "btn_not_clicked"}>sign-up</button>
                 </div>
                 {auth === "login" ? <Login /> : <Register />}
             </div>

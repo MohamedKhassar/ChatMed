@@ -1,8 +1,27 @@
 import { useState } from "react"
 import "./register.css"
+import { useAuth } from "../../../provider/AuthProvider"
 const Register = () => {
     const [isHidden, setIsHidden] = useState(true)
     const [image, setImage] = useState("")
+    const [user, setUser] = useState({
+        username: "",
+        email: "",
+        password: ""
+    })
+    const { signUp, loading } = useAuth();
+    const sign_Up = async () => {
+        try {
+            if (user.username, user.email, user.password) {
+                await signUp(user.email, user.password);
+                console.log("User signed up successfully");
+            }
+        } catch (error) {
+            console.error("Error signing up:", error.message);
+        }
+    };
+
+
     return (
         <div className="register_container">
             {image &&
@@ -16,17 +35,17 @@ const Register = () => {
             </div>
             <div className="register_input">
                 <img src="./username.png" alt="" />
-                <input type="text" placeholder="username" />
+                <input name="username" onChange={(e) => setUser({ ...user, username: e.target.value })} type="text" placeholder="username" />
             </div>
             <div className="register_input">
                 <img src="./arroba.png" alt="" />
-                <input type="email" placeholder="email" />
+                <input name="email" readOnly={loading} onChange={(e) => setUser({ ...user, email: e.target.value })} type="email" placeholder="email" />
             </div>
             <div className="register_input">
-                <img onClick={() => { setIsHidden(!isHidden) }} src={isHidden ? "./hidden.png" : "./eye.png"} alt="" />
-                <input type={isHidden ? "password" : "text"} placeholder="password" />
+                <img name="password" readOnly={loading} onClick={() => { setIsHidden(!isHidden) }} src={isHidden ? "./hidden.png" : "./eye.png"} alt="" />
+                <input onChange={(e) => setUser({ ...user, password: e.target.value })} type={isHidden ? "password" : "text"} placeholder="password" />
             </div>
-            <button>register <img src="./enter.png" alt="" /></button>
+            <button disabled={loading} style={{ cursor: !loading && "not-allowed" }} onClick={sign_Up}>register <img className={loading && "spin"} src={!loading ? "./enter.png" : "./reload.png"} alt="" /></button>
         </div>
     )
 }
