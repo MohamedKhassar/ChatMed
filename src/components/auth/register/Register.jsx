@@ -10,10 +10,10 @@ const Register = () => {
         password: ""
     })
     const { signUp, loading } = useAuth();
-    const sign_Up = async () => {
+    const sign_Up = () => {
         try {
             if (user.username, user.email, user.password) {
-                await signUp(user.email, user.password);
+                signUp(user.username, user.email, user.password, image);
                 console.log("User signed up successfully");
             }
         } catch (error) {
@@ -45,7 +45,7 @@ const Register = () => {
                 <img name="password" readOnly={loading} onClick={() => { setIsHidden(!isHidden) }} src={isHidden ? "./hidden.png" : "./eye.png"} alt="" />
                 <input onChange={(e) => setUser({ ...user, password: e.target.value })} type={isHidden ? "password" : "text"} placeholder="password" />
             </div>
-            <button disabled={loading} style={{ cursor: !loading && "not-allowed" }} onClick={sign_Up}>register <img className={loading && "spin"} src={!loading ? "./enter.png" : "./reload.png"} alt="" /></button>
+            <button disabled={loading} style={{ cursor: loading && "not-allowed" }} onClick={sign_Up}>register <img className={loading && "spin"} src={!loading ? "./enter.png" : "./reload.png"} alt="" /></button>
         </div>
     )
 }

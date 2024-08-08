@@ -2,6 +2,8 @@ import { useState } from "react"
 import "./login.css"
 import { useAuth } from "../../../provider/AuthProvider";
 const Login = () => {
+    console.log(import.meta.env.API_KEY)
+
     const [isHidden, setIsHidden] = useState(true)
 
     const [user, setUser] = useState({

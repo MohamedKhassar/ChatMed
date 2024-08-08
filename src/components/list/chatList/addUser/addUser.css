@@ -1,0 +1,112 @@
+.add_container {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #131e44c2;
+    padding: 30px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    animation: opacity .3s linear;
+    .search_user
+{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        input {
+            outline: none;
+            padding: 15px;
+            border-radius: 5px;
+            border: none;
+}
+
+input::placeholder{
+    font-weight: 900;
+    text-transform: capitalize;
+}
+
+        button {
+            background: #009688;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+    }
+
+    .search_items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .user_name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img {
+                width: 40px;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                -webkit-user-drag: none;
+                user-select: none;
+            }
+
+            h2 {
+                user-select: none;
+                color: white;
+                text-transform: capitalize;
+                font-size: 18px;
+            }
+        }
+
+        button {
+            background: #009688;
+            color: white;
+            font-weight: 600;
+            text-transform: capitalize;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+}
+
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
