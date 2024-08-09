@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import Auth from "./components/auth/Auth"
 import Chat from "./components/chat/Chat"
 import Detail from "./components/detail/Detail"
@@ -9,14 +10,16 @@ const App = () => {
   console.log(currentUser, loading)
   return (
     <>
-      {currentUser ? <div className="container">
-        <List />
-        <Chat />
-        <Detail />
-      </div >
+      {currentUser ?
+        <div className="container">
+          <List />
+          <Chat />
+          <Detail />
+        </div >
         :
         <Auth />
       }
+      <ToastContainer />
     </>
   )
 }

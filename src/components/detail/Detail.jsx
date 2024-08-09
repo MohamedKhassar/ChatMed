@@ -1,7 +1,7 @@
 import { useAuth } from "../../provider/AuthProvider";
 import "./detail.css"
 const Detail = () => {
-    const { logout } = useAuth();
+    const { logout, loading } = useAuth();
     return (
         <div className="detail">
             <div className="user">
@@ -66,7 +66,7 @@ const Detail = () => {
                     </div>
                 </div>
                 <button>Block User</button>
-                <button onClick={logout} className="logout">Logout</button>
+                <button onClick={logout} className="logout">{loading ? <img src="./reload.png" alt="" /> : "Logout"}</button>
             </div>
         </div>
     )

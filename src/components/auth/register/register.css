@@ -137,6 +137,19 @@
         -webkit-animation: spin 2s linear infinite;
 }
 
+.error{
+    color: red;
+    font-weight: 600;
+    font-size: 14px;
+    float: left;
+}
+
+.error_input{
+    border: 1px solid red;
+    box-shadow: 0 0 20px red;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

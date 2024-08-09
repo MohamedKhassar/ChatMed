@@ -47,18 +47,27 @@ export const AuthProvider = ({ children }) => {
     return res
   };
 
-  const signIn = (email, password) => {
+  const signIn = async (email, password) => {
     setLoading(true);
-    const logUser = signInWithEmailAndPassword(auth, email, password);
-    setLoading(false);
-    return logUser
+    try {
+      const logUser = await signInWithEmailAndPassword(auth, email, password);
+      setLoading(false);
+      return logUser
+    } catch (error) {
+      console.log(error)
+      setLoading(false);
+    }
   };
 
   const logout = () => {
     setLoading(true);
-    const UserOut = signOut(auth);
-    setLoading(false);
-    return UserOut
+    try {
+      const UserOut = signOut(auth);
+      setLoading(false);
+      return UserOut
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const value = {
@@ -71,7 +80,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };
